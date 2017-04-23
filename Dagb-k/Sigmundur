@@ -15,9 +15,12 @@ KL 09:59: Ég man ekki skóla server credentials þanig ég er bara nota minn ei
 KL 10:44: Liður 7. tók fokk lángan tíma því FORMAT(`MOVIE_YEAR`, 'YYYY') þýðir ekki sýndu bara ártalið ræfill. Notaði YEAR(`MOVIE_YEAR`) í staðinn.
 KL 11:01: Kláraði Lið 8. var lengi að því. Gleymdi að group by væri hlutur.
 KL 11:24: Eyddi auka tíma í Lið 9. bara til að fá sömu útkomu og í verkefnalysingunni. Var að fá 51.127500 í staðin fyrir 51.1275 og það böggaði mig. Lausninn var að casta avg sem castaði dálkin sem decimal 10,4 sem er svo kastaður sem decimal 10,4. það er öruglega betrileið til en nennis þetta virkar.
-KL 11:30 já ég leit á lið 9 aftur og breytti því í styttri kóda sem virkar eins notaði bara CAST(AVG(`MOVIE_COST`) AS DECIMAL(10,4))
-KL 11:40 Liður 10. var eins og liður 8 og 9 saman so ez.
-KL 11:50 Liður 11. einfalt join, samt databaseinn í syningardæminu er vitlaus aftur
-KL 12:18 gleymdi að skrifa um lið 12 og 13. Þeir vorus bara svipaðir og 11
-KL 12:20 Liður 14. er ekki mjög skír. "Write a query to display the movie title and movie year for all movies that have a price code." allar myndinar eru með price code það er ekki hægt að hafa mynd án price code samkvæmt diagraminu.
-KL 12:22 geri bara inner join á hina töfluna hef það sem WHERE PRICE_CODE IS NOT NULL HELD AÐ ÉG E
+KL 11:30: já ég leit á lið 9 aftur og breytti því í styttri kóda sem virkar eins notaði bara CAST(AVG(`MOVIE_COST`) AS DECIMAL(10,4))
+KL 11:40: Liður 10. var eins og liður 8 og 9 saman so ez.
+KL 11:50: Liður 11. einfalt join, samt databaseinn í syningardæminu er vitlaus aftur
+KL 12:18: gleymdi að skrifa um lið 12 og 13. Þeir vorus bara svipaðir og 11
+KL 12:20: Liður 14. er ekki mjög skír. "Write a query to display the movie title and movie year for all movies that have a price code." allar myndinar eru með price code það er ekki hægt að hafa mynd án price code samkvæmt diagraminu.
+KL 12:22: geri bara inner join á hina töfluna hef það sem WHERE PRICE_CODE IS NOT NULL held að ég eigi að not joins eins og hinir liðinir
+KL 12:55: 15 og 16 virkuðu vel og ekkert vesen.
+KL 14:55: ok 17, 18 no problem. En 19 tók smá tíma þurfti að stara á diagramið smá og joina öll borðin saman svo þau virki. Síðan var að leita að leið til að reikna með dagsettningum en hun var inbygðs þanig ég var að sóa tímanum mínum
+KL 15:17:
