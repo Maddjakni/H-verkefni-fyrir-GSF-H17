@@ -23,4 +23,8 @@ KL 12:20: Liður 14. er ekki mjög skír. "Write a query to display the movie ti
 KL 12:22: geri bara inner join á hina töfluna hef það sem WHERE PRICE_CODE IS NOT NULL held að ég eigi að not joins eins og hinir liðinir
 KL 12:55: 15 og 16 virkuðu vel og ekkert vesen.
 KL 14:55: ok 17, 18 no problem. En 19 tók smá tíma þurfti að stara á diagramið smá og joina öll borðin saman svo þau virki. Síðan var að leita að leið til að reikna með dagsettningum en hun var inbygðs þanig ég var að sóa tímanum mínum
-KL 15:17:
+KL 15:28: tók smá hlé til að stara út í loftið það var p good. ég kláraði 20,21 og 22 er farinna að googla þetta minna og minna. Leita að mínum eigin lausnum og svoleiðis. Hef samt bara verið að googla til að rifja upp hluti. 
+KL 17:20: liður 23. er búin að vera erfiðastur því ég var búin að gleyma um table alias en ég runnaði subquery sem gaf mér meðaltalið á kostnaði myndana
+KL 17:53: 24-26 Mjög einfaldar alter skipanir þanig ekkert mkið að seigja um það.
+KL 18:13: 27 og 28 voru mjög einfaldar.
+
