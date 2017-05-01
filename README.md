@@ -2,4 +2,4 @@
 
 Þettar er hópverkefni fyrir GSF2A3U vor önn 2017
 
-Nemendur: Sigmudur og Kjartan
+Nemendur: Sigmudur og Kristófer
