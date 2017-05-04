@@ -1,0 +1,368 @@
+mysql> -- Lir 1 og 2 see HOPVERKEFNI.SQL
+mysql> -- Lir 3. -Virkar
+mysql> SELECT `MOVIE_TITLE`,`MOVIE_YEAR`,`MOVIE_COST`
+    -> FROM `MOVIE`
+    -> WHERE `MOVIE_TITLE` LIKE '%hope%';
++------------------+------------+------------+
+| MOVIE_TITLE      | MOVIE_YEAR | MOVIE_COST |
++------------------+------------+------------+
+| Richard Goodhope | 2008-01-01 |      59.95 |
+| Where Hope Dies  | 1998-01-01 |      25.49 |
++------------------+------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> -- Lir 4. -Virkar
+mysql> SELECT `MOVIE_TITLE`, `MOVIE_YEAR`, `MOVIE_GENRE`
+    -> FROM `MOVIE`
+    -> WHERE `MOVIE_GENRE` = "ACTION";
++--------------------------+------------+-------------+
+| MOVIE_TITLE              | MOVIE_YEAR | MOVIE_GENRE |
++--------------------------+------------+-------------+
+| Smokey Mountain Wildlife | 2004-01-01 | ACTION      |
+| Time To Burn             | 2005-01-01 | ACTION      |
++--------------------------+------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> -- Lir 5. -Virkar
+mysql> SELECT `MOVIE_NUM`, `MOVIE_TITLE`,  `MOVIE_COST`
+    -> FROM  `MOVIE`
+    -> WHERE `MOVIE_COST` > 40;
++-----------+--------------------------+------------+
+| MOVIE_NUM | MOVIE_TITLE              | MOVIE_COST |
++-----------+--------------------------+------------+
+|      1235 | Smokey Mountain Wildlife |      59.95 |
+|      1236 | Richard Goodhope         |      59.95 |
+|      1238 | Constant Companion       |      89.95 |
+|      1245 | Time To Burn             |      45.49 |
+|      1246 | What He Doesn't Know     |      58.29 |
++-----------+--------------------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> -- Lir 6. -Virkar
+mysql> SELECT `MOVIE_NUM`, `MOVIE_TITLE`, `MOVIE_COST`, `MOVIE_GENRE`
+    -> FROM `MOVIE`
+    -> WHERE `MOVIE_COST` < 50
+    -> ORDER BY `MOVIE_GENRE`;
++-----------+----------------------------+------------+-------------+
+| MOVIE_NUM | MOVIE_TITLE                | MOVIE_COST | MOVIE_GENRE |
++-----------+----------------------------+------------+-------------+
+|      1245 | Time To Burn               |      45.49 | ACTION      |
+|      1237 | Beatnik Fever              |      29.95 | COMEDY      |
+|      1239 | Where Hope Dies            |      25.49 | DRAMA       |
+|      1234 | The Cesar Family Christmas |      39.95 | FAMILY      |
++-----------+----------------------------+------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> -- lir 7. -Virkar
+mysql> SELECT `MOVIE_NUM`, CONCAT(`MOVIE_TITLE`,' ','(', YEAR(`MOVIE_YEAR`),') ', `MOVIE_GENRE`) AS `MOVIE_DESCRIPTION`
+    -> FROM `MOVIE`;
++-----------+------------------------------------------+
+| MOVIE_NUM | MOVIE_DESCRIPTION                        |
++-----------+------------------------------------------+
+|      1234 | The Cesar Family Christmas (2007) FAMILY |
+|      1235 | Smokey Mountain Wildlife (2004) ACTION   |
+|      1236 | Richard Goodhope (2008) DRAMA            |
+|      1237 | Beatnik Fever (2007) COMEDY              |
+|      1238 | Constant Companion (2008) DRAMA          |
+|      1239 | Where Hope Dies (1998) DRAMA             |
+|      1245 | Time To Burn (2005) ACTION               |
+|      1246 | What He Doesn't Know (2006) COMEDY       |
++-----------+------------------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> -- Lir 8. -Virkar
+mysql> SELECT `MOVIE_GENRE`, COUNT(*) AS `NUMBER OF MOVIES`
+    -> FROM `MOVIE`
+    -> GROUP BY `MOVIE_GENRE`
+    -> ORDER BY  `NUMBER OF MOVIES` DESC;
++-------------+------------------+
+| MOVIE_GENRE | NUMBER OF MOVIES |
++-------------+------------------+
+| DRAMA       |                3 |
+| ACTION      |                2 |
+| COMEDY      |                2 |
+| FAMILY      |                1 |
++-------------+------------------+
+4 rows in set (0.00 sec)
+
+mysql> -- Lir 9. - Virkar
+mysql> SELECT CAST(AVG(`MOVIE_COST`) AS DECIMAL(10,4)) AS `AVRAGE MOVIE COST`
+    -> FROM `MOVIE`;
++-------------------+
+| AVRAGE MOVIE COST |
++-------------------+
+|           51.1275 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> -- Lir 10. -Virkar
+mysql> SELECT `MOVIE_GENRE`, CAST(AVG(`MOVIE_COST`) AS DECIMAL(10,2)) AS `AVRAGE COST`
+    -> FROM `MOVIE`
+    -> GROUP BY `MOVIE_GENRE`
+    -> ORDER BY `AVRAGE COST` DESC;
++-------------+-------------+
+| MOVIE_GENRE | AVRAGE COST |
++-------------+-------------+
+| DRAMA       |       58.46 |
+| ACTION      |       52.72 |
+| COMEDY      |       44.12 |
+| FAMILY      |       39.95 |
++-------------+-------------+
+4 rows in set (0.01 sec)
+
+mysql> -- Lir 11. -Virkar
+mysql> SELECT `MOVIE_TITLE`, `MOVIE_GENRE`, `PRICE`.`PRICE_DESCRIPTION`, `PRICE`.`PRICE_RENTFEE`
+    -> FROM `MOVIE`
+    -> INNER JOIN `PRICE` ON `MOVIE`.`PRICE_CODE` = `PRICE`.`PRICE_CODE`;
++----------------------------+-------------+-------------------+---------------+
+| MOVIE_TITLE                | MOVIE_GENRE | PRICE_DESCRIPTION | PRICE_RENTFEE |
++----------------------------+-------------+-------------------+---------------+
+| Smokey Mountain Wildlife   | ACTION      | Standard          |          2.00 |
+| Time To Burn               | ACTION      | Standard          |          2.00 |
+| What He Doesn't Know       | COMEDY      | Standard          |          2.00 |
+| The Cesar Family Christmas | FAMILY      | New Realese       |          3.50 |
+| Richard Goodhope           | DRAMA       | New Realese       |          3.50 |
+| Beatnik Fever              | COMEDY      | New Realese       |          3.50 |
+| Constant Companion         | DRAMA       | New Realese       |          3.50 |
+| Where Hope Dies            | DRAMA       | Discount          |          1.50 |
++----------------------------+-------------+-------------------+---------------+
+8 rows in set (0.00 sec)
+
+mysql> -- Lir 12. -Virkar
+mysql> SELECT `MOVIE_GENRE`, CAST(AVG(`PRICE`.`PRICE_RENTFEE`) AS DECIMAL(10,2)) AS `AVRAGE RENTAL FEE`
+    -> FROM `MOVIE`
+    -> INNER JOIN `PRICE` ON `MOVIE`.`PRICE_CODE` = `PRICE`.`PRICE_CODE`
+    -> GROUP BY `MOVIE_GENRE`
+    -> ORDER BY `AVRAGE RENTAL FEE` DESC;
++-------------+-------------------+
+| MOVIE_GENRE | AVRAGE RENTAL FEE |
++-------------+-------------------+
+| FAMILY      |              3.50 |
+| DRAMA       |              2.83 |
+| COMEDY      |              2.75 |
+| ACTION      |              2.00 |
++-------------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> -- Lir 13 -Virkar
+mysql> SELECT `MOVIE_TITLE`, YEAR(`MOVIE_YEAR`) AS `MOVIE_YEAR`, CAST((`MOVIE_COST`/`PRICE`.`PRICE_RENTFEE`)AS DECIMAL(10,2)) AS `BREAKEVEN RENTALS`
+    -> FROM `MOVIE`
+    -> INNER JOIN `PRICE` ON `MOVIE`.`PRICE_CODE` = `PRICE`.`PRICE_CODE`
+    -> ORDER BY `BREAKEVEN RENTALS` DESC;
++----------------------------+------------+-------------------+
+| MOVIE_TITLE                | MOVIE_YEAR | BREAKEVEN RENTALS |
++----------------------------+------------+-------------------+
+| Smokey Mountain Wildlife   |       2004 |             29.98 |
+| What He Doesn't Know       |       2006 |             29.15 |
+| Constant Companion         |       2008 |             25.70 |
+| Time To Burn               |       2005 |             22.75 |
+| Richard Goodhope           |       2008 |             17.13 |
+| Where Hope Dies            |       1998 |             16.99 |
+| The Cesar Family Christmas |       2007 |             11.41 |
+| Beatnik Fever              |       2007 |              8.56 |
++----------------------------+------------+-------------------+
+8 rows in set (0.00 sec)
+
+mysql> -- Lir 14. -Spurja hall hvafokkanum eir er abia um.
+mysql> SELECT `MOVIE_TITLE`,YEAR(`MOVIE_YEAR`) AS `MOVIE_YEAR`
+    -> FROM `MOVIE`
+    -> INNER JOIN `PRICE` ON `MOVIE`.`PRICE_CODE` = `PRICE`.`PRICE_CODE`
+    -> WHERE `PRICE`.`PRICE_CODE` != 0
+    -> ORDER BY `MOVIE_YEAR` DESC;
++----------------------------+------------+
+| MOVIE_TITLE                | MOVIE_YEAR |
++----------------------------+------------+
+| Richard Goodhope           |       2008 |
+| Constant Companion         |       2008 |
+| The Cesar Family Christmas |       2007 |
+| Beatnik Fever              |       2007 |
+| What He Doesn't Know       |       2006 |
+| Time To Burn               |       2005 |
+| Smokey Mountain Wildlife   |       2004 |
+| Where Hope Dies            |       1998 |
++----------------------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> -- Lir 15. -Virkar
+mysql> SELECT `MOVIE_TITLE`, `MOVIE_YEAR`, `MOVIE_COST`
+    -> FROM `MOVIE`
+    -> WHERE `MOVIE_COST` BETWEEN 44.99 AND 49.99;
++--------------+------------+------------+
+| MOVIE_TITLE  | MOVIE_YEAR | MOVIE_COST |
++--------------+------------+------------+
+| Time To Burn | 2005-01-01 |      45.49 |
++--------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> -- Lir 16. -Virkar
+mysql> SELECT `MOVIE_TITLE`, YEAR(`MOVIE_YEAR`) AS `MOVIE_YEAR`, `PRICE`.`PRICE_DESCRIPTION`,`PRICE`.`PRICE_RENTFEE`,`MOVIE_GENRE`
+    -> FROM `MOVIE`
+    -> INNER JOIN `PRICE` ON `MOVIE`.`PRICE_CODE`= `PRICE`.`PRICE_CODE`
+    -> WHERE `MOVIE_GENRE` = "FAMILY" OR `MOVIE_GENRE` = "DRAMA" OR `MOVIE_GENRE` = "COMEDY";
++----------------------------+------------+-------------------+---------------+-------------+
+| MOVIE_TITLE                | MOVIE_YEAR | PRICE_DESCRIPTION | PRICE_RENTFEE | MOVIE_GENRE |
++----------------------------+------------+-------------------+---------------+-------------+
+| What He Doesn't Know       |       2006 | Standard          |          2.00 | COMEDY      |
+| The Cesar Family Christmas |       2007 | New Realese       |          3.50 | FAMILY      |
+| Richard Goodhope           |       2008 | New Realese       |          3.50 | DRAMA       |
+| Beatnik Fever              |       2007 | New Realese       |          3.50 | COMEDY      |
+| Constant Companion         |       2008 | New Realese       |          3.50 | DRAMA       |
+| Where Hope Dies            |       1998 | Discount          |          1.50 | DRAMA       |
++----------------------------+------------+-------------------+---------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> -- Lir 17. -Virkar.
+mysql> SELECT MIN(`MEM_BALANCE`) AS `MINIMUM BALANCE` ,MAX(`MEM_BALANCE`) AS `MAXIMUM BALANCE` ,CAST(AVG(`MEM_BALANCE`) AS DECIMAL(10,2)) AS `AVRAGE BALANCE`
+    -> FROM `MEMEBERSHIP`;
++-----------------+-----------------+----------------+
+| MINIMUM BALANCE | MAXIMUM BALANCE | AVRAGE BALANCE |
++-----------------+-----------------+----------------+
+|            0.00 |           15.00 |           4.83 |
++-----------------+-----------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> -- Lir 18. -Virkar
+mysql> SELECT CONCAT(`MEM_FNAME`, ' ', `MEM_LNAME`) AS `MEMBERSHIP NAME`, CONCAT(`MEM_STREET`, ' ', `MEM_STATE`,' ', `MEM_ZIP` ) AS `MEMBERSHIP ADDRESS`
+    -> FROM `MEMEBERSHIP`;
++-----------------+----------------------------------+
+| MEMBERSHIP NAME | MEMBERSHIP ADDRESS               |
++-----------------+----------------------------------+
+| Tami Dawson     | 2632 Takli Circle TN 37136       |
+| Curt Knight     | 4025 Cornell Court KY 41219      |
+| Jamal Melendez  | 788 East 145th Avenue TN 38579   |
+| Iva McClain     | 6045 Musket Ball Circle KY 42783 |
+| Miranda Parks   | 4469 Maxwell Place TN 38183      |
+| Rosario Elliott | 7578 Danner Avenue TN 38402      |
+| Mattie Guy      | 4390 Evergreen Steet KY 40740    |
+| Clint Ochoa     | 1711 Elm Steet TN 37745          |
+| Lewis Rosales   | 4524 Southwind Circle TN 38326   |
+| Stacy Mann      | 2789 East Cook Avenue TN 37132   |
+| Luis Trujillo   | 7267 Melvin Avenue TN 37754      |
+| Minnie Gonzales | 6430 Vasili Drive TN 38076       |
++-----------------+----------------------------------+
+12 rows in set (0.00 sec)
+
+mysql> -- Lir 19. -Virkar
+mysql> SELECT `RENTAL`.`RENT_NUM`, `RENTAL`.`RENT_DATE`, `VIDEO`.`VID_NUM`, `MOVIE`.`MOVIE_TITLE`, `DETAILRENTAL`.`DETAIL_DUEDATE`, `DETAILRENTAL`.`DETAIL_RETURNDATE`
+    -> FROM `DETAILRENTAL`
+    -> INNER JOIN `RENTAL` ON `DETAILRENTAL`.`RENT_NUM` = `RENTAL`.`RENT_NUM`
+    -> INNER JOIN `VIDEO` ON `DETAILRENTAL`.`VID_NUM`  = `VIDEO`.`VID_NUM`
+    -> INNER JOIN `MOVIE` ON `VIDEO`.`MOVIE_NUM` = `MOVIE`.`MOVIE_NUM`
+    -> WHERE `DETAILRENTAL`.`DETAIL_DUEDATE` < `DETAILRENTAL`.`DETAIL_RETURNDATE`;
++----------+------------+---------+----------------------------+----------------+-------------------+
+| RENT_NUM | RENT_DATE  | VID_NUM | MOVIE_TITLE                | DETAIL_DUEDATE | DETAIL_RETURNDATE |
++----------+------------+---------+----------------------------+----------------+-------------------+
+|     1001 | 2009-03-01 |   54321 | The Cesar Family Christmas | 2009-03-06     | 2009-03-07        |
+|     1002 | 2009-03-01 |   54324 | The Cesar Family Christmas | 2009-03-06     | 2009-03-07        |
+|     1003 | 2009-03-02 |   34341 | Smokey Mountain Wildlife   | 2009-03-06     | 2009-03-07        |
+|     1004 | 2009-03-02 |   34369 | Richard Goodhope           | 2009-03-06     | 2009-03-07        |
++----------+------------+---------+----------------------------+----------------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> -- Lir 20. -Virkar
+mysql> SELECT `RENTAL`.`RENT_NUM`, `RENTAL`.`RENT_DATE`, `VIDEO`.`VID_NUM`, `MOVIE`.`MOVIE_TITLE`, `DETAILRENTAL`.`DETAIL_DUEDATE`, `DETAILRENTAL`.`DETAIL_RETURNDATE`, (`DETAILRENTAL`.`DETAIL_RETURNDATE`-`DETAILRENTAL`.`DETAIL_DUEDATE`) AS `DAYS PAST DUEDATE`
+    -> FROM `DETAILRENTAL`
+    -> INNER JOIN `RENTAL` ON `DETAILRENTAL`.`RENT_NUM` = `RENTAL`.`RENT_NUM`
+    -> INNER JOIN `VIDEO` ON `DETAILRENTAL`.`VID_NUM`  = `VIDEO`.`VID_NUM`
+    -> INNER JOIN `MOVIE` ON `VIDEO`.`MOVIE_NUM` = `MOVIE`.`MOVIE_NUM`
+    -> WHERE `DETAILRENTAL`.`DETAIL_DUEDATE` < `DETAILRENTAL`.`DETAIL_RETURNDATE`;
++----------+------------+---------+----------------------------+----------------+-------------------+-------------------+
+| RENT_NUM | RENT_DATE  | VID_NUM | MOVIE_TITLE                | DETAIL_DUEDATE | DETAIL_RETURNDATE | DAYS PAST DUEDATE |
++----------+------------+---------+----------------------------+----------------+-------------------+-------------------+
+|     1001 | 2009-03-01 |   54321 | The Cesar Family Christmas | 2009-03-06     | 2009-03-07        |                 1 |
+|     1002 | 2009-03-01 |   54324 | The Cesar Family Christmas | 2009-03-06     | 2009-03-07        |                 1 |
+|     1003 | 2009-03-02 |   34341 | Smokey Mountain Wildlife   | 2009-03-06     | 2009-03-07        |                 1 |
+|     1004 | 2009-03-02 |   34369 | Richard Goodhope           | 2009-03-06     | 2009-03-07        |                 1 |
++----------+------------+---------+----------------------------+----------------+-------------------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> -- Lir 21. -Virkar
+mysql> SELECT `RENTAL`.`RENT_NUM`, `RENTAL`.`RENT_DATE`, `MOVIE`.`MOVIE_TITLE`, `PRICE`.`PRICE_RENTFEE` AS `DETAIL_FEE`
+    -> FROM `DETAILRENTAL`
+    -> INNER JOIN `RENTAL` ON `DETAILRENTAL`.`RENT_NUM` = `RENTAL`.`RENT_NUM`
+    -> INNER JOIN `VIDEO` ON `DETAILRENTAL`.`VID_NUM`  = `VIDEO`.`VID_NUM`
+    -> INNER JOIN `MOVIE` ON `VIDEO`.`MOVIE_NUM` = `MOVIE`.`MOVIE_NUM`
+    -> INNER JOIN `PRICE` ON `MOVIE`.`PRICE_CODE`= `PRICE`.`PRICE_CODE`
+    -> WHERE `DETAILRENTAL`.`DETAIL_DUEDATE` > `DETAILRENTAL`.`DETAIL_RETURNDATE`;
++----------+------------+----------------------+------------+
+| RENT_NUM | RENT_DATE  | MOVIE_TITLE          | DETAIL_FEE |
++----------+------------+----------------------+------------+
+|     1005 | 2009-03-02 | What He Doesn't Know |       2.00 |
+|     1006 | 2009-03-02 | What He Doesn't Know |       2.00 |
+|     1008 | 2009-03-03 | Time To Burn         |       2.00 |
+|     1009 | 2009-03-03 | Time To Burn         |       2.00 |
++----------+------------+----------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> -- Lir 22. -Virkar
+mysql> SELECT `MEMEBERSHIP`.`MEM_NUM`, `MEMEBERSHIP`.`MEM_LNAME`, `MEMEBERSHIP`.`MEM_FNAME`,  SUM(`PRICE`.`PRICE_RENTFEE`) AS `RENTAL FEE REVENUE`
+    -> FROM `MEMEBERSHIP`
+    -> INNER JOIN `RENTAL` ON `MEMEBERSHIP`.`MEM_NUM` =`RENTAL`.`MEM_NUM`
+    -> INNER JOIN `DETAILRENTAL` ON `RENTAL`.`RENT_NUM`=`DETAILRENTAL`.`RENT_NUM`
+    -> INNER JOIN `VIDEO` ON `DETAILRENTAL`.`VID_NUM`  = `VIDEO`.`VID_NUM`
+    -> INNER JOIN `MOVIE` ON `VIDEO`.`MOVIE_NUM` = `MOVIE`.`MOVIE_NUM`
+    -> INNER JOIN `PRICE` ON `MOVIE`.`PRICE_CODE`= `PRICE`.`PRICE_CODE`
+    -> WHERE `DETAILRENTAL`.`DETAIL_DUEDATE` > `DETAILRENTAL`.`DETAIL_RETURNDATE`
+    -> GROUP BY `MEMEBERSHIP`.`MEM_NUM`;
++---------+-----------+-----------+--------------------+
+| MEM_NUM | MEM_LNAME | MEM_FNAME | RENTAL FEE REVENUE |
++---------+-----------+-----------+--------------------+
+|     105 | McClain   | Iva       |               2.00 |
+|     107 | Elliott   | Rosario   |               2.00 |
+|     111 | Mann      | Stacy     |               4.00 |
++---------+-----------+-----------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql> -- Lir 23. -Virkar
+mysql> SELECT `MOVIE_NUM`, `G`.`MOVIE_GENRE`, CAST(`AC` AS DECIMAL(10,2)) AS `AVRAGE COST` , `MOVIE_COST`, CAST((`MOVIE_COST`-`AC`)/`AC`*100 AS DECIMAL(10,2)) AS `PRECENTAGE DIFFREANCE`
+    -> FROM`MOVIE` `G`, (SELECT `MOVIE_GENRE`, AVG(`MOVIE_COST`) AS `AC` FROM`MOVIE` GROUP BY  `MOVIE_GENRE`) `J`
+    -> WHERE `G`.`MOVIE_GENRE` = `J`.`MOVIE_GENRE`;
++-----------+-------------+-------------+------------+-----------------------+
+| MOVIE_NUM | MOVIE_GENRE | AVRAGE COST | MOVIE_COST | PRECENTAGE DIFFREANCE |
++-----------+-------------+-------------+------------+-----------------------+
+|      1234 | FAMILY      |       39.95 |      39.95 |                  0.00 |
+|      1235 | ACTION      |       52.72 |      59.95 |                 13.71 |
+|      1236 | DRAMA       |       58.46 |      59.95 |                  2.54 |
+|      1237 | COMEDY      |       44.12 |      29.95 |                -32.12 |
+|      1238 | DRAMA       |       58.46 |      89.95 |                 53.86 |
+|      1239 | DRAMA       |       58.46 |      25.49 |                -56.40 |
+|      1245 | ACTION      |       52.72 |      45.49 |                -13.71 |
+|      1246 | COMEDY      |       44.12 |      58.29 |                 32.12 |
++-----------+-------------+-------------+------------+-----------------------+
+8 rows in set (0.00 sec)
+
+mysql> -- Lir 24. -Virkar
+mysql> ALTER TABLE `DETAILRENTAL`
+    -> ADD `DETAIL_DAYSLATE` INT(3) NULL;
+ERROR 1060 (42S21): Duplicate column name 'DETAIL_DAYSLATE'
+mysql> -- Lir 25. -Virkar
+mysql> ALTER TABLE `VIDEO`
+    -> ADD `VID_STATUS` VARCHAR(4) DEFAULT 'IN' NOT NULL
+    -> CHECK  (`VID_STATUS` = 'IN' OR `VID_STATUS` = 'OUT' OR `VID_STATUS` = 'LOST');
+ERROR 1060 (42S21): Duplicate column name 'VID_STATUS'
+mysql> -- Lir 26. -Virkar
+mysql> UPDATE `VIDEO`
+    -> SET `VID_STATUS` = 'OUT'
+    -> WHERE `VID_NUM` IN (SELECT `VID_NUM` FROM `DETAILRENTAL` WHERE `DETAIL_RETURNDATE` IS NULL);
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> -- Lir 27. -Virkar
+mysql> ALTER TABLE `PRICE`
+    -> ADD `PRICE_RENTDAYS` INT(2) DEFAULT 3 NOT NULL;
+ERROR 1060 (42S21): Duplicate column name 'PRICE_RENTDAYS'
+mysql> -- Lir 28 -Virkar
+mysql> UPDATE `PRICE`
+    -> SET `PRICE_RENTDAYS` = 5
+    -> WHERE `PRICE_CODE` IN (1,3);
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 2  Changed: 0  Warnings: 0
+
+mysql>
+mysql> UPDATE `PRICE`
+    -> SET `PRICE_RENTDAYS` = 7
+    -> WHERE `PRICE_CODE` = 4;
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql>
