@@ -1,17 +1,17 @@
 23.04.17
-Ég áhvað að byrja verkefnið. Ég komst ekki í kynninguna fyrir verkefnið en mætti svo tíman eftir kynninguna og stofan var læst gg Hallur
-Byrjaði með að búa til github fyrir þetta og senti Kjartani sem á að vera með mér í hóp email. Ef hann svarar ekki þá verð ég bara gera þetta einn
+Ég ákvað að byrja verkefnið. Ég komst ekki í kynninguna fyrir verkefnið en mætti svo tíman eftir kynninguna og stofan var læst gg Hallur
+Byrjaði að búa til github fyrir þetta og senti Kristófer, sem á að vera með mér í hóp, email. Ef hann svarar ekki þá verð ég bara gera þetta einn
 Ætla að byrja á því að búa til database
-Líka senda email á hall og spurja afhverju við fáum bara framm að 28 apríl þegar öll hin hópverkefnin eru framm að 7 maí
+Líka senda email á hall og spyrja afhverju við fáum bara fram að 28 apríl þegar öll hin hópverkefnin eru frmm að 7 maí
 Mikill prakkari siggi hakkari
-KL 06:31: Ætla byggja databasinn eftir myndum i verkefna lysingunni.
-KL 07:10: Búin að búa til database þurfti að gera hann þrisvar því workbench crashaði hvert skiptið sem ég savaði modelið
+KL 06:31: Ætla byggja databasinn eftir myndum i verkefnalysingunni.
+KL 07:10: Búinn að búa til database þurfti að gera hann þrisvar því workbench crashaði hvert skiptið sem ég savaði modelið
 KL 07:11: ætla að búa til inserts yay!!! 
-KL 08:06: búin að búa til inserts á eftir að testa
-KL 08:56: Búin að troubleshoota aðalega formatting á dates í insert skipunum og nokkur vitlaus nöfn í sjáluf databasinum en etta virkar 
-KL 09:46: Komin á lið 5. og fann aðra villu í databasinum. Ég decleraði ekki decimals þanig þetta var bar lélegur int setti decimal sem (5,2) svo ég fæ 2 auka stafi og get farið upp í hærri tölur ef ég vill
+KL 08:06: búinn að búa til inserts á eftir að testa
+KL 08:56: Búinn að troubleshoota aðalega formatting á dates í insert skipunum og nokkur vitlaus nöfn í sjálfum databasinum en þetta virkar 
+KL 09:46: Kominn á lið 5. og fann aðra villu í databasinum. Ég decleraði ekki decimals þanig þetta var bar lélegur int setti decimal sem (5,2) svo ég fæ 2 auka stafi og get farið upp í hærri tölur ef ég vill
 KL 09:53: Svokallaði "Figure 7.58" er með vitlausar útkomur því að verðið er yfir $50 á sumum línum. Mjög ósáttur >:( og mun væla eins og tík ef ég fæ mínus fyrir að gera allt rétt.
-KL 09:59: Ég man ekki skóla server credentials þanig ég er bara nota minn eigin sever því ég er kúl og borga 400kr fyrir server mánaðlega
+KL 09:59: Ég man ekki skóla server credentials þannig ég er bara nota minn eigin server því ég er kúl og borga 400kr fyrir server mánaðarlega
 KL 10:44: Liður 7. tók fokk lángan tíma því FORMAT(`MOVIE_YEAR`, 'YYYY') þýðir ekki sýndu bara ártalið ræfill. Notaði YEAR(`MOVIE_YEAR`) í staðinn.
 KL 11:01: Kláraði Lið 8. var lengi að því. Gleymdi að group by væri hlutur.
 KL 11:24: Eyddi auka tíma í Lið 9. bara til að fá sömu útkomu og í verkefnalysingunni. Var að fá 51.127500 í staðin fyrir 51.1275 og það böggaði mig. Lausninn var að casta avg sem castaði dálkin sem decimal 10,4 sem er svo kastaður sem decimal 10,4. það er öruglega betrileið til en nennis þetta virkar.
