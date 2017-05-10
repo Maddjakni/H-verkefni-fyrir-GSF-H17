@@ -9,7 +9,7 @@ KL 07:10: Búinn að búa til database þurfti að gera hann þrisvar því work
 KL 07:11: ætla að búa til inserts yay!!! 
 KL 08:06: búinn að búa til inserts á eftir að testa
 KL 08:56: Búinn að troubleshoota aðalega formatting á dates í insert skipunum og nokkur vitlaus nöfn í sjálfum databasinum en þetta virkar 
-KL 09:46: Kominn á lið 5. og fann aðra villu í databasinum. Ég decleraði ekki decimals þanig þetta var bar lélegur int setti decimal sem (5,2) svo ég fæ 2 auka stafi og get farið upp í hærri tölur ef ég vill
+KL 09:46: Kominn á lið 5. og fann aðra villu í databasinum. Ég decleraði ekki decimals þanig þetta var bara lélegur int setti decimal sem (5,2) svo ég fæ 2 auka stafi og get farið upp í hærri tölur ef ég vill
 KL 09:53: Svokallaði "Figure 7.58" er með vitlausar útkomur því að verðið er yfir $50 á sumum línum. Mjög ósáttur >:( og mun væla eins og tík ef ég fæ mínus fyrir að gera allt rétt.
 KL 09:59: Ég man ekki skóla server credentials þannig ég er bara nota minn eigin server því ég er kúl og borga 400kr fyrir server mánaðarlega
 KL 10:44: Liður 7. tók fokk lángan tíma því FORMAT(`MOVIE_YEAR`, 'YYYY') þýðir ekki sýndu bara ártalið ræfill. Notaði YEAR(`MOVIE_YEAR`) í staðinn.
@@ -19,16 +19,16 @@ KL 11:30: já ég leit á lið 9 aftur og breytti því í styttri kóda sem vir
 KL 11:40: Liður 10. var eins og liður 8 og 9 saman so ez.
 KL 11:50: Liður 11. einfalt join, samt databaseinn í syningardæminu er vitlaus aftur
 KL 12:18: gleymdi að skrifa um lið 12 og 13. Þeir vorus bara svipaðir og 11
-KL 12:20: Liður 14. er ekki mjög skír. "Write a query to display the movie title and movie year for all movies that have a price code." allar myndinar eru með price code það er ekki hægt að hafa mynd án price code samkvæmt diagraminu.
+KL 12:20: Liður 14. er ekki mjög skýr. "Write a query to display the movie title and movie year for all movies that have a price code." allar myndinar eru með price code það er ekki hægt að hafa mynd án price code samkvæmt diagraminu.
 KL 12:22: geri bara inner join á hina töfluna hef það sem WHERE PRICE_CODE IS NOT NULL held að ég eigi að not joins eins og hinir liðinir
 KL 12:55: 15 og 16 virkuðu vel og ekkert vesen.
-KL 14:55: ok 17, 18 no problem. En 19 tók smá tíma þurfti að stara á diagramið smá og joina öll borðin saman svo þau virki. Síðan var að leita að leið til að reikna með dagsettningum en hun var inbygðs þanig ég var að sóa tímanum mínum
-KL 15:28: tók smá hlé til að stara út í loftið það var p good. ég kláraði 20,21 og 22 er farinna að googla þetta minna og minna. Leita að mínum eigin lausnum og svoleiðis. Hef samt bara verið að googla til að rifja upp hluti. 
-KL 17:20: liður 23. er búin að vera erfiðastur því ég var búin að gleyma um table alias en ég runnaði subquery sem gaf mér meðaltalið á kostnaði myndana
-KL 17:53: 24-26 Mjög einfaldar alter skipanir þanig ekkert mkið að seigja um það.
-KL 18:13: 27 og 28 voru mjög einfaldar.
+KL 14:55: ok 17, 18 no problem. En 19 tók smá tíma þurfti að stara á diagramið smá og joina öll borðin saman svo þau virki. Síðan var að leita að leið til að reikna með dagsettningum en hun var innbygð þannig ég var að sóa tímanum mínum
+KL 15:28: tók smá hlé til að stara út í loftið það var p good. ég kláraði 20,21 og 22 er farinn að googla þetta minna og minna. Leita að mínum eigin lausnum og svoleiðis. Hef samt bara verið að googla til að rifja upp hluti. 
+KL 17:20: liður 23. er búinn að vera erfiðastur því ég var búinn að gleyma um table alias en ég runnaði subquery sem gaf mér meðaltalið á kostnaði myndana
+KL 17:53: 24-26 Mjög einfaldar alter skipanir þannig ekkert mkið að seigja um það.
+KL 18:13: 27 og 28 voru mjög einfaldir.
 
 1.5.17
-Ég er tilbúin til að skila, Kristófer sagðist ætla hitta mig í tíma en þð var kennara forfall. Ég mætti samt en kristófer ver ekki þarna
-Liðir 29-32 eru ekki tilbúnar en ég hef ekki tíma í að finna út úr þeim vona að þettar dugar því ég er búin að gera allt einn.
-Ef ég hitti kristófer eitthvað ætla ég að reyna fá hann til að gera seinustu liðina, ég þarf að klára önnur verkefni.
+Ég er tilbúinn til að skila, Kristófer sagðist ætla að hitta mig í tíma en það var kennara forfall. Ég mætti samt en kristófer var ekki þarna
+Liðir 29-32 eru ekki tilbúnir en ég hef ekki tíma í að finna út úr þeim vona að þettar dugar því ég er búinn að gera allt einn.
+Ef ég hitti kristófer eitthvað ætla ég að reyna að fá hann til að gera seinustu liðina, ég þarf að klára önnur verkefni.
